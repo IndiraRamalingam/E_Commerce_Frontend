@@ -24,15 +24,15 @@ function SignIn() {
       {  
           const response = await instance.authInstance.post('/users/signin',{email,password});
           sessionStorage.setItem("token", response.data.token)
-          console.log("YES")
           if (response.status === 200) {
-            console.log("NO")
+            setMsg("")
              const response = await instance.protectedInstance.get('/users/getId');
              const res=response.data;
+             console.log(response.data.user_name);
              const params_id=res.user_ID;
              console.log(params_id)
-             navigate(`/products/${params_id}`)
-            //navigate(`/`)
+             navigate(`/`)
+             window.location.reload();
           }   
       }
       catch(error)

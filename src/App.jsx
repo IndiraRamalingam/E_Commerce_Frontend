@@ -12,6 +12,7 @@ import SignUp from './components/user/SignUp';
 import SignIn from './components/user/SignIn';
 import ForgotPassword from './components/user/ForgotPassword';
 import ResetPassword from './components/user/ResetPassword';
+import OrderList from './components/Pages/OrderList'
 
 function App() {
   return (
@@ -26,6 +27,7 @@ function App() {
               <Route path='/products' element={<Products />} />
               <Route path='/product' element={<Product />} />
               <Route path='/cart' element={<Cart />} />
+              <Route path='/orderlist/:id' element={<OrderList/>} /> 
               <Route path='/contact' element={<Contact />} />
               <Route path='/signup' element={<SignUp />} />
               <Route path='/signin' element={<SignIn />} />
