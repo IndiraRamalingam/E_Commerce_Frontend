@@ -60,7 +60,9 @@ function OrderList() {
         
         <div  style={{'display':'grid','justifyContent':'center'}} >
             <button className='btn btn-warning m-2' onClick={() => {
-                navigate(`/`)
+                 navigate(`/`)
+                window.location.reload();
+               
             }}>Close</button>
         </div>
         </div>

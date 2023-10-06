@@ -1,11 +1,34 @@
-
-import React from 'react';
+import React, { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux';
 import { addToCart } from '../../store/slices/cartSlice';
+import instance from '../../services/instance'
 
 const Product = ({id,image,title,price}) =>{
     
+  const [name, setName] = useState('');
     const dispatch = useDispatch();
+
+    useEffect(() => {
+      getName()
+    })
+  
+    const getName = async () => {
+      const response = await instance.protectedInstance.get('/users/getId');
+      const res = response.data;
+      setName(response.data.user_name);
+    }
+    
+    const addtocart =() =>{
+      if(name.length ==0)
+      {
+        getName();
+        console.log("NAME "+name)
+        alert("Please login to continue....                                                                  Email : testuser@gmail.com                       Password : test@123")
+      }
+      else{
+        dispatch(addToCart({ id, image, title, price }))
+      }
+    }
 
   return (
     <>
@@ -18,7 +41,7 @@ const Product = ({id,image,title,price}) =>{
                 <p className="card-text fs-5 fw-normal fst-italic" style={{color:'#f4a51c'}}>
                 Price: ₹{price}
                 </p>
-                <button className='btn btncolorcart' onClick={() => dispatch(addToCart({ id, image, title, price }))}>
+                <button className='btn btncolorcart' onClick={addtocart}>
                   Add to Cart
                 </button>
               </div>

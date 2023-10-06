@@ -27,6 +27,7 @@ function NavBar() {
     setId(params_id)
   }
 
+  console.log("NAV "+name)
   return (
     <>
       <Navbar collapseOnSelect expand="lg" className='navigation'>
@@ -49,17 +50,21 @@ function NavBar() {
                 <div>
                 <span style={{'fontSize':'20px','fontStyle':'italic','marginRight':'25px'}}>Hi, <a onClick={()=>{
                   navigate(`/orderlist/${id}`)
+                  window.location.reload();
                 }}>{name}</a></span>
                 <button className="btn btn-danger "  onClick={()=>
                   {
                     setName('')
                     sessionStorage.clear();
                     navigate('/')
+                    window.location.reload();
                   }}>LogOut</button>
                   </div>
               ) : (
                 <Link to='/signin'>
-                <a className="btn btncolorlogin m-3"
+                <a className="btn btncolorlogin m-3" onClick={()=>{
+                  alert("Sample Credentails....                                                                  Email : testuser@gmail.com                       Password : test@123")
+                }}
                 ><span style={{ fontWeight: 'bold' }}>Login</span>  <i className="fa-solid fa-right-to-bracket"></i></a>
               </Link>
               )}

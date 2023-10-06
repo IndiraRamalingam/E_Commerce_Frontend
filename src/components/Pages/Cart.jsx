@@ -69,6 +69,7 @@ const Cart = () => {
                 alert(result.data.msg);
                 navigate(`/orderlist/${id}`)
                 fetchOrders();
+                window.location.reload();
               },
               prefill: {
                 name: 'example name',
